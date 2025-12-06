@@ -1,0 +1,72 @@
+/* ============================================
+   ANIMATIONS.CSS - Animaciones y Transiciones
+   ============================================ */
+
+/* Smooth scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Transiciones globales */
+* {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   ANIMACIÓN FADE-IN-UP
+   ============================================ */
+
+/* Estado inicial de las cards */
+.book-card {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* Estado animado */
+.book-card.fade-in-up {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Keyframes */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   DELAYS ESCALONADOS
+   ============================================ */
+
+.book-card:nth-child(1) { animation-delay: 0.1s; }
+.book-card:nth-child(2) { animation-delay: 0.2s; }
+.book-card:nth-child(3) { animation-delay: 0.3s; }
+.book-card:nth-child(4) { animation-delay: 0.4s; }
+.book-card:nth-child(5) { animation-delay: 0.5s; }
+.book-card:nth-child(6) { animation-delay: 0.6s; }
+.book-card:nth-child(7) { animation-delay: 0.7s; }
+
+/* ============================================
+   ACCESIBILIDAD - REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    /* Cards aparecen directamente sin animación */
+    .book-card {
+        opacity: 1;
+        transform: none;
+    }
+}
