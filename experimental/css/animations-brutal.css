@@ -1,0 +1,455 @@
+/* ============================================
+   BRUTAL ANIMATIONS - MÁXIMO ESPECTÁCULO
+   ============================================ */
+
+/* ============================================
+   ENTRANCE ANIMATIONS
+   ============================================ */
+
+/* Hero title entrance */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px) rotate(10deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) rotate(-2deg);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes rotateIn {
+    from {
+        opacity: 0;
+        transform: rotate(-90deg) scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(3deg) scale(1);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Apply animations to hero elements */
+.title-line:nth-child(1) {
+    animation: slideInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s backwards;
+}
+
+.title-line:nth-child(2) {
+    animation: slideInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s backwards;
+}
+
+.title-line:nth-child(3) {
+    animation: slideInRight 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s backwards;
+}
+
+.author-block {
+    animation: rotateIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s backwards;
+}
+
+.statement-box {
+    animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 1s backwards;
+}
+
+.shape-1 {
+    animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s backwards;
+}
+
+.shape-2 {
+    animation: rotateIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s backwards;
+}
+
+.shape-3 {
+    animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.9s backwards;
+}
+
+/* ============================================
+   SCROLL-TRIGGERED ANIMATIONS
+   ============================================ */
+
+/* Book items entrance */
+.book-item {
+    opacity: 0;
+    transform: translateY(100px) rotate(10deg);
+    transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+                transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.book-item.visible {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+}
+
+/* Staggered delays */
+.book-item:nth-child(1).visible { transition-delay: 0.1s; }
+.book-item:nth-child(2).visible { transition-delay: 0.2s; }
+.book-item:nth-child(3).visible { transition-delay: 0.3s; }
+.book-item:nth-child(4).visible { transition-delay: 0.4s; }
+.book-item:nth-child(5).visible { transition-delay: 0.5s; }
+.book-item:nth-child(6).visible { transition-delay: 0.6s; }
+.book-item:nth-child(7).visible { transition-delay: 0.7s; }
+
+/* ============================================
+   PARALLAX EFFECTS
+   ============================================ */
+
+.statement-layer-1 {
+    transform: translateY(var(--parallax-1, 0));
+    transition: transform 0.1s linear;
+}
+
+.statement-layer-2 {
+    transform: translateY(var(--parallax-2, 0)) translateX(var(--parallax-x, 0));
+    transition: transform 0.1s linear;
+}
+
+.statement-layer-3 {
+    transform: translateY(var(--parallax-3, 0));
+    transition: transform 0.1s linear;
+}
+
+/* ============================================
+   MICRO-INTERACTIONS
+   ============================================ */
+
+/* Button press effect */
+.book-link:active {
+    transform: scale(0.95) translateX(4px);
+}
+
+/* Link underline animation */
+.footer-link {
+    position: relative;
+}
+
+.footer-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--red);
+    transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.footer-link:hover::after {
+    width: 100%;
+}
+
+/* ============================================
+   GLITCH TEXT EFFECT
+   ============================================ */
+
+.title-line {
+    position: relative;
+}
+
+.title-line::before,
+.title-line::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.hero-brutal:hover .title-line::before {
+    opacity: 0.8;
+    color: var(--red);
+    animation: glitch1 0.3s infinite;
+    -webkit-text-stroke: 0;
+}
+
+.hero-brutal:hover .title-line::after {
+    opacity: 0.8;
+    color: var(--blue);
+    animation: glitch2 0.3s infinite;
+    -webkit-text-stroke: 0;
+}
+
+@keyframes glitch1 {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+@keyframes glitch2 {
+    0% { transform: translate(0); }
+    20% { transform: translate(2px, -2px); }
+    40% { transform: translate(2px, 2px); }
+    60% { transform: translate(-2px, -2px); }
+    80% { transform: translate(-2px, 2px); }
+    100% { transform: translate(0); }
+}
+
+/* ============================================
+   HOVER ANIMATIONS - BRUTALIST STYLE
+   ============================================ */
+
+/* Shape animations on hover */
+.shape-1 {
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero-brutal:hover .shape-1 {
+    transform: rotate(135deg) scale(1.2);
+}
+
+.shape-2 {
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero-brutal:hover .shape-2 {
+    transform: rotate(15deg) scale(0.8);
+}
+
+.shape-3 {
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero-brutal:hover .shape-3 {
+    transform: translate(-50px, 50px) scale(1.5);
+}
+
+/* ============================================
+   NUMBER COUNTER ANIMATION
+   ============================================ */
+
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.8);
+    }
+    to {
+        opacity: 0.1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.hero-number {
+    animation: countUp 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s backwards;
+}
+
+/* ============================================
+   SECTION HEADER ANIMATIONS
+   ============================================ */
+
+.section-header {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.section-header.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.title-number {
+    display: inline-block;
+    animation: none;
+}
+
+.section-header.visible .title-number {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        color: var(--black);
+    }
+    50% {
+        transform: scale(1.2);
+        color: var(--red);
+    }
+}
+
+/* ============================================
+   SCROLL PROGRESS BAR ANIMATION
+   ============================================ */
+
+.scroll-progress {
+    transform-origin: left;
+    animation: progressPulse 2s infinite;
+}
+
+@keyframes progressPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 rgba(255, 0, 0, 0);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+    }
+}
+
+/* ============================================
+   FOOTER ENTRANCE
+   ============================================ */
+
+.footer-brutal {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 1s, transform 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.footer-brutal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================
+   CURSOR CUSTOM (OPTIONAL)
+   ============================================ */
+
+body {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="black" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="black"/></svg>') 12 12, crosshair;
+}
+
+a, button, .book-item {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" fill="none" stroke="black" stroke-width="2"/><rect x="8" y="8" width="8" height="8" fill="black"/></svg>') 12 12, pointer;
+}
+
+/* ============================================
+   3D TRANSFORM EFFECTS
+   ============================================ */
+
+.book-item {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.book-item:hover {
+    transform: scale(1.05) rotateX(var(--rotate-x, 0deg)) rotateY(var(--rotate-y, 0deg));
+}
+
+/* Dynamic rotation based on mouse position (handled by JS) */
+.book-item.tilt {
+    transition: transform 0.1s ease-out;
+}
+
+/* ============================================
+   IMAGE REVEAL EFFECT
+   ============================================ */
+
+.book-image-wrap {
+    clip-path: inset(0);
+    transition: clip-path 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.book-item:not(.visible) .book-image-wrap {
+    clip-path: inset(0 100% 0 0);
+}
+
+/* ============================================
+   TEXT SCRAMBLE EFFECT (handled by JS)
+   ============================================ */
+
+.scramble {
+    position: relative;
+}
+
+.scramble::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.scramble.active::before {
+    animation: scrambleText 0.6s steps(10);
+}
+
+@keyframes scrambleText {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .book-item {
+        opacity: 1;
+        transform: none;
+    }
+
+    .scroll-progress {
+        animation: none;
+    }
+}
+
+/* ============================================
+   LOADING ANIMATION
+   ============================================ */
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+body {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* ============================================
+   BONUS: SHAKE ON ERROR (for interactions)
+   ============================================ */
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+    20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+.shake {
+    animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
