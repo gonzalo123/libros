@@ -30,6 +30,7 @@ Esta es una versión **completamente disruptiva** del marketplace de libros, dis
 ```
 experimental/
 ├── index-experimental.html          # Catálogo principal
+├── tremenda-turra-experimental.html # Detalle del libro más reciente
 ├── tragedia-experimental.html       # Ejemplo de página de detalle
 │
 ├── css/
@@ -111,6 +112,7 @@ Usa el botón en el footer: **"VERSIÓN MINIMALISTA ←"**
 
 ### Páginas disponibles:
 - `index-experimental.html` - Catálogo completo
+- `tremenda-turra-experimental.html` - Detalle de Tremenda turra
 - `tragedia-experimental.html` - Detalle del libro de tragedias
 
 ## 🎨 Inspiración

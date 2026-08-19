@@ -120,6 +120,7 @@
 .book-item:nth-child(5).visible { transition-delay: 0.5s; }
 .book-item:nth-child(6).visible { transition-delay: 0.6s; }
 .book-item:nth-child(7).visible { transition-delay: 0.7s; }
+.book-item:nth-child(8).visible { transition-delay: 0.8s; }
 
 /* ============================================
    PARALLAX EFFECTS
